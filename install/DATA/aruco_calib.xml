@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<opencv_storage>
+<calibration_time>"Wed Dec 20 06:45:05 2017"</calibration_time>
+<image_width>640</image_width>
+<image_height>480</image_height>
+<flags>0</flags>
+<Intrinsic type_id="opencv-matrix">
+  <rows>3</rows>
+  <cols>3</cols>
+  <dt>d</dt>
+  <data>
+    5.9688887986498958e+02 0. 2.9503410075488858e+02 0.
+    5.9924317509102491e+02 2.5640881434990467e+02 0. 0. 1.</data></Intrinsic>
+<Distortion type_id="opencv-matrix">
+  <rows>1</rows>
+  <cols>5</cols>
+  <dt>d</dt>
+  <data>
+    -6.0043530425893457e-02 -1.0953896073566394e-01
+    -1.1207138157793152e-02 -8.2584888148732900e-03
+    -4.0600742367756260e-01</data></Distortion>
+<avg_reprojection_error>7.8379996150783260e-01</avg_reprojection_error>
+</opencv_storage>
