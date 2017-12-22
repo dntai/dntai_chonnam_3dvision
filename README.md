@@ -1,7 +1,10 @@
 # 3-D VISION FINAL PROJECT
 Chonnam National University, Gwangju, South Korea
+
 2017 3-D Vision Class  
+
 Professor: Chilwoo Lee
+
 Student: Do Nhu Tai
 
 **Target: Building a application for argument reality video**
