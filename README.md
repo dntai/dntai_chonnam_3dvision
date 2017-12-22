@@ -1,6 +1,5 @@
 # 3-D VISION FINAL PROJECT
-Chonnam National University, Gwangju, South Korea
-
+Chonnam National University, Gwangju, South Korea<br/>
 2017 3-D Vision Class  
 
 Professor: Chilwoo Lee
@@ -9,11 +8,11 @@ Student: Do Nhu Tai
 
 **Target: Building a application for argument reality video**
 
-##Aruco Create Board
+## Aruco Create Board
 ![alt text](https://raw.githubusercontent.com/dntai/dntai_chonnam_3dvision/master/images/aruco_create_board.png)
 
 
-##Argument Marker Detection
+## Argument Marker Detection
 ![alt text](https://raw.githubusercontent.com/dntai/dntai_chonnam_3dvision/master/images/aruco_marker_detection.png)
 
 
@@ -24,7 +23,7 @@ Student: Do Nhu Tai
 ![alt text](https://raw.githubusercontent.com/dntai/dntai_chonnam_3dvision/master/images/aruco_calibration_camera.png)
 
 
-##Argument Reality 2D Camera
+## Argument Reality 2D Camera
 ![alt text](https://raw.githubusercontent.com/dntai/dntai_chonnam_3dvision/master/images/argument_reality_2d_camera.png)
 
 
