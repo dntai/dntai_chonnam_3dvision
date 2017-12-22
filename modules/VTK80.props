@@ -1,0 +1,144 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    
+	<VTK_DebugSuffix Condition="'$(Configuration)'=='Debug'">d</VTK_DebugSuffix>
+    <VTK_DebugSuffix Condition="'$(Configuration)'!='Debug'"></VTK_DebugSuffix>
+    
+	<VTKVersion>8.0</VTKVersion>
+    
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v140_xp'">vc14</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v140'">vc14</VCShortVersion>
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v120'">vc12</VCShortVersion>
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v110'">vc11</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v100'">vc10</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v90'">vc9</VCShortVersion>
+	
+	<ORIGINAL_VTK_DIR>C:\dev\VTK8\</ORIGINAL_VTK_DIR>
+	<ORIGINAL_VTK_BIN_DIR>$(ORIGINAL_VTK_DIR)$(PlatformShortName)\$(Configuration)\bin\</ORIGINAL_VTK_BIN_DIR>
+	<ORIGINAL_VTK_LIB_DIR>$(ORIGINAL_VTK_DIR)$(PlatformShortName)\$(Configuration)\lib\</ORIGINAL_VTK_LIB_DIR>
+	
+	<VTK_DIR>$(SolutionDir)libraries\vtk8\</VTK_DIR>
+	<VTK_BIN_DIR>$(VTK_DIR)$(PlatformShortName)\$(Configuration)\bin\</VTK_BIN_DIR>
+	<VTK_LIB_DIR>$(VTK_DIR)$(PlatformShortName)\$(Configuration)\lib\</VTK_LIB_DIR>
+	
+    <VTK_PATH>$(VTK_BIN_DIR)</VTK_PATH>
+	<PATH_DIR>$(VTK_PATH);$(PATH_DIR)</PATH_DIR>
+	
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(VTK_DIR)include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(VTK_LIB_DIR);$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(VTK_PATH);$(ExecutablePath)</ExecutablePath>
+    <LocalDebuggerEnvironment>PATH=$(PATH_DIR);$(PATH)</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <ClCompile>
+      <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>
+		vtkInteractionStyle-$(VTKVersion).lib;
+		vtkFiltersExtraction-$(VTKVersion).lib;
+		vtkRenderingLOD-$(VTKVersion).lib;
+		vtkIOPLY-$(VTKVersion).lib;
+        %(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkInteractionStyle-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkFiltersExtraction-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkRenderingLOD-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkIOPLY-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkFiltersTexture-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkIOExport-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkIOImage-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkRenderingGL2PSOpenGL2-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkIOGeometry-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkImagingCore-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkRenderingCore-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkRenderingFreeType-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkRenderingOpenGL2-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkFiltersSources-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkFiltersCore-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkIOCore-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkFiltersGeneral-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonExecutionModel-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonDataModel-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonTransforms-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonMath-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonCore-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkFiltersStatistics-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonMisc-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkFiltersModeling-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkRenderingContext2D-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtklibharu-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkFiltersGeometry-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonSystem-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkDICOMParser-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkmetaio-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkpng-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtksys-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkzlib-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtktiff-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkjpeg-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkgl2ps-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkfreetype-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkglew-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtklz4-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkalglib-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonColor-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkCommonComputationalGeometry-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_BIN_DIR)vtkImagingFourier-$(VTKVersion).dll" "$(VTK_BIN_DIR)" /S /Y /E /D
+	  
+	  xcopy "$(ORIGINAL_VTK_LIB_DIR)vtkInteractionStyle-$(VTKVersion).lib" "$(VTK_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_LIB_DIR)vtkFiltersExtraction-$(VTKVersion).lib" "$(VTK_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_LIB_DIR)vtkRenderingLOD-$(VTKVersion).lib" "$(VTK_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_VTK_LIB_DIR)vtkIOPLY-$(VTKVersion).lib" "$(VTK_LIB_DIR)" /S /Y /E /D
+	  
+	  xcopy "$(ORIGINAL_VTK_DIR)include\*.*" "$(VTK_DIR)include\" /S /Y /E /D
+	  %(Command)
+	  </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+    <BuildMacro Include="VTK_DebugSuffix">
+      <Value>$(VTK_DebugSuffix)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VTKVersion">
+      <Value>$(VTKVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VCShortVersion">
+      <Value>$(VCShortVersion)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="ORIGINAL_VTK_DIR">
+      <Value>$(ORIGINAL_VTK_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="ORIGINAL_VTK_BIN_DIR">
+      <Value>$(ORIGINAL_VTK_BIN_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="ORIGINAL_VTK_LIB_DIR">
+      <Value>$(ORIGINAL_VTK_LIB_DIR)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="VTK_DIR">
+      <Value>$(VTK_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="VTK_BIN_DIR">
+      <Value>$(VTK_BIN_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="VTK_LIB_DIR">
+      <Value>$(VTK_LIB_DIR)</Value>
+    </BuildMacro>
+	
+    <BuildMacro Include="VTK_PATH">
+      <Value>$(VTK_PATH)</Value>
+    </BuildMacro>
+    <BuildMacro Include="PATH_DIR">
+      <Value>$(PATH_DIR)</Value>
+    </BuildMacro>
+  </ItemGroup>
+  
+</Project>

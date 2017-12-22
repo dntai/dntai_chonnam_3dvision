@@ -1,0 +1,122 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+    
+	<OpenCVDebugSuffix Condition="'$(Configuration)'=='Debug'">d</OpenCVDebugSuffix>
+    <OpenCVDebugSuffix Condition="'$(Configuration)'!='Debug'"></OpenCVDebugSuffix>
+    
+	<OpenCvVersion>330</OpenCvVersion>
+    
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v140_xp'">vc14</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v140'">vc14</VCShortVersion>
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v120'">vc12</VCShortVersion>
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v110'">vc11</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v100'">vc10</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v90'">vc9</VCShortVersion>
+	
+	<ORIGINAL_OPENCV_DIR>C:\dev\opencv330\</ORIGINAL_OPENCV_DIR>
+	<ORIGINAL_OPENCV_BIN_DIR>$(ORIGINAL_OPENCV_DIR)$(PlatformShortName)\$(VCShortVersion)\bin\</ORIGINAL_OPENCV_BIN_DIR>
+	<ORIGINAL_OPENCV_LIB_DIR>$(ORIGINAL_OPENCV_DIR)$(PlatformShortName)\$(VCShortVersion)\lib\</ORIGINAL_OPENCV_LIB_DIR>
+	
+	<OPENCV_DIR>$(SolutionDir)libraries\opencv330\</OPENCV_DIR>
+	<OPENCV_BIN_DIR>$(OPENCV_DIR)$(PlatformShortName)\$(VCShortVersion)\bin\</OPENCV_BIN_DIR>
+	<OPENCV_LIB_DIR>$(OPENCV_DIR)$(PlatformShortName)\$(VCShortVersion)\lib\</OPENCV_LIB_DIR>
+	
+    <OPENCV_PATH>$(OPENCV_BIN_DIR)</OPENCV_PATH>
+	<PATH_DIR>$(OPENCV_PATH);$(PATH_DIR)</PATH_DIR>
+	
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(OPENCV_DIR)include\opencv\;$(OPENCV_DIR)\include\;$(IncludePath)</IncludePath>
+    <LibraryPath>$(OPENCV_LIB_DIR);$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(OPENCV_PATH);$(ExecutablePath)</ExecutablePath>
+    <LocalDebuggerEnvironment>PATH=$(PATH_DIR);$(PATH)</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+	<ClCompile>
+		<PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;_UNICODE;UNICODE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+    </ClCompile>
+    <Link>
+      <AdditionalDependencies>
+        opencv_core$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+        opencv_highgui$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+		opencv_imgcodecs$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+		opencv_imgproc$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+		opencv_videoio$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+		opencv_calib3d$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+		opencv_xfeatures2d$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+		opencv_features2d$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+		opencv_viz$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+		opencv_aruco$(OpenCvVersion)$(OpenCVDebugSuffix).lib;
+        %(AdditionalDependencies)
+      </AdditionalDependencies>
+    </Link>
+    <PostBuildEvent>
+      <Command>xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_core$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_highgui$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_imgcodecs$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_imgproc$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_videoio$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_calib3d$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_flann$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_ffmpeg$(OpenCvVersion).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_ffmpeg$(OpenCvVersion)_64.dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_xfeatures2d$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_features2d$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_viz$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_BIN_DIR)opencv_aruco$(OpenCvVersion)$(OpenCVDebugSuffix).dll" "$(OPENCV_BIN_DIR)" /S /Y /E /D
+	  
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_core$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_highgui$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_imgcodecs$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_imgproc$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_videoio$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_calib3d$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_xfeatures2d$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_features2d$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_viz$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  xcopy "$(ORIGINAL_OPENCV_LIB_DIR)opencv_aruco$(OpenCvVersion)$(OpenCVDebugSuffix).lib" "$(OPENCV_LIB_DIR)" /S /Y /E /D
+	  
+	  xcopy "$(ORIGINAL_OPENCV_DIR)include\*.*" "$(OPENCV_DIR)include\" /S /Y /E /D
+	  %(Command)
+	  </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+	<BuildMacro Include="OpenCVDebugSuffix">
+      <Value>$(OpenCVDebugSuffix)</Value>
+    </BuildMacro>
+    <BuildMacro Include="OpenCvVersion">
+      <Value>$(OpenCvVersion)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VCShortVersion">
+      <Value>$(VCShortVersion)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="ORIGINAL_OPENCV_DIR">
+      <Value>$(ORIGINAL_OPENCV_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="ORIGINAL_OPENCV_BIN_DIR">
+      <Value>$(ORIGINAL_OPENCV_BIN_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="ORIGINAL_OPENCV_LIB_DIR">
+      <Value>$(ORIGINAL_OPENCV_LIB_DIR)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="OPENCV_DIR">
+      <Value>$(OPENCV_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="OPENCV_BIN_DIR">
+      <Value>$(OPENCV_BIN_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="OPENCV_LIB_DIR">
+      <Value>$(OPENCV_LIB_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="OPENCV_PATH">
+      <Value>$(OPENCV_PATH)</Value>
+    </BuildMacro>
+  </ItemGroup>
+  
+</Project>

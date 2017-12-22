@@ -1,0 +1,74 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+	
+	<APIMSWIN_DebugSuffix Condition="'$(Configuration)'=='Debug'"></APIMSWIN_DebugSuffix>
+	<APIMSWIN_DebugSuffix Condition="'$(Configuration)'!='Debug'"></APIMSWIN_DebugSuffix>
+	
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v140_xp'">v140_xp</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v140'">vc14</VCShortVersion>
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v120'">vc12</VCShortVersion>
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v110'">vc11</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v100'">vc10</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v90'">vc9</VCShortVersion>
+	
+	<ORIGINAL_APIMSWIN_DIR>C:\dev\api-ms-win\</ORIGINAL_APIMSWIN_DIR>
+	<ORIGINAL_APIMSWIN_BIN_DIR>$(ORIGINAL_APIMSWIN_DIR)$(PlatformShortName)\</ORIGINAL_APIMSWIN_BIN_DIR>
+	
+	<APIMSWIN_DIR>$(SolutionDir)\libraries\api-ms-win\</APIMSWIN_DIR>
+    <APIMSWIN_BIN_DIR>$(APIMSWIN_DIR)$(PlatformShortName)\</APIMSWIN_BIN_DIR>
+	
+	<APIMSWIN_PATH>$(APIMSWIN_BIN_DIR)</APIMSWIN_PATH>
+	<PATH_DIR>$(APIMSWIN_PATH);$(PATH_DIR)</PATH_DIR>
+	
+  </PropertyGroup>
+  
+  <PropertyGroup>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(APIMSWIN_PATH);$(ExecutablePath)</ExecutablePath>
+    <LocalDebuggerEnvironment>PATH=$(PATH_DIR);$(PATH)</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+	<PostBuildEvent>
+      <Command>xcopy "$(ORIGINAL_APIMSWIN_BIN_DIR)*.dll" "$(APIMSWIN_BIN_DIR)" /S /Y /E /D
+	  %(Command)
+	  </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  
+  <ItemGroup>
+	<BuildMacro Include="APIMSWIN_DebugSuffix">
+      <Value>$(APIMSWIN_DebugSuffix)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VCShortVersion">
+      <Value>$(VCShortVersion)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="ORIGINAL_APIMSWIN_DIR">
+      <Value>$(ORIGINAL_APIMSWIN_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="ORIGINAL_APIMSWIN_BIN_DIR">
+      <Value>$(ORIGINAL_APIMSWIN_BIN_DIR)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="APIMSWIN_DIR">
+      <Value>$(APIMSWIN_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="APIMSWIN_BIN_DIR">
+      <Value>$(APIMSWIN_BIN_DIR)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="APIMSWIN_PATH">
+      <Value>$(APIMSWIN_PATH)</Value>
+    </BuildMacro>
+	<BuildMacro Include="PATH_DIR">
+      <Value>$(PATH_DIR)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>

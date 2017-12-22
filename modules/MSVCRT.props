@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ImportGroup Label="PropertySheets" />
+  <PropertyGroup Label="UserMacros">
+	
+	<MSVCRT_DebugSuffix Condition="'$(Configuration)'=='Debug'">d</MSVCRT_DebugSuffix>
+	<MSVCRT_DebugSuffix Condition="'$(Configuration)'!='Debug'"></MSVCRT_DebugSuffix>
+	
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v140_xp'">vc14</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v140'">vc14</VCShortVersion>
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v120'">vc12</VCShortVersion>
+    <VCShortVersion Condition="'$(PlatformToolset)'=='v110'">vc11</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v100'">vc10</VCShortVersion>
+	<VCShortVersion Condition="'$(PlatformToolset)'=='v90'">vc9</VCShortVersion>
+	
+	<ORIGINAL_MSVCRT_DIR>C:\dev\msvcrt\</ORIGINAL_MSVCRT_DIR>
+	<ORIGINAL_MSVCRT_BIN_DIR>$(ORIGINAL_MSVCRT_DIR)$(VCShortVersion)\$(PlatformShortName)\</ORIGINAL_MSVCRT_BIN_DIR>
+	
+	<MSVCRT_DIR>$(SolutionDir)\libraries\msvcrt\</MSVCRT_DIR>
+	<MSVCRT_BIN_DIR>$(MSVCRT_DIR)$(VCShortVersion)\$(PlatformShortName)\</MSVCRT_BIN_DIR>
+	
+    <MSVCRT_PATH>$(MSVCRT_BIN_DIR)</MSVCRT_PATH>
+	<PATH_DIR>$(MSVCRT_BIN_DIR);$(PATH_DIR)</PATH_DIR>
+	
+  </PropertyGroup>
+  <PropertyGroup>
+    <IncludePath>$(IncludePath)</IncludePath>
+    <LibraryPath>$(LibraryPath)</LibraryPath>
+    <ExecutablePath>$(MSVCRT_PATH);$(ExecutablePath)</ExecutablePath>
+    <LocalDebuggerEnvironment>PATH=$(PATH_DIR);$(PATH)</LocalDebuggerEnvironment>
+  </PropertyGroup>
+  <ItemDefinitionGroup>
+    <Link>
+      <AdditionalDependencies>%(AdditionalDependencies)</AdditionalDependencies>
+    </Link>
+	<PostBuildEvent>
+      <Command>xcopy "$(ORIGINAL_MSVCRT_BIN_DIR)*$(MSVCRT_DebugSuffix).dll" "$(MSVCRT_BIN_DIR)" /S /Y /E /D
+	  %(Command)
+	  </Command>
+    </PostBuildEvent>
+  </ItemDefinitionGroup>
+  <ItemGroup>
+	<BuildMacro Include="MSVCRT_DebugSuffix">
+      <Value>$(MSVCRT_DebugSuffix)</Value>
+    </BuildMacro>
+    <BuildMacro Include="VCShortVersion">
+      <Value>$(VCShortVersion)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="ORIGINAL_MSVCRT_DIR">
+      <Value>$(ORIGINAL_MSVCRT_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="ORIGINAL_MSVCRT_BIN_DIR">
+      <Value>$(ORIGINAL_MSVCRT_BIN_DIR)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="MSVCRT_DIR">
+      <Value>$(MSVCRT_DIR)</Value>
+    </BuildMacro>
+	
+	<BuildMacro Include="MSVCRT_BIN_DIR">
+      <Value>$(MSVCRT_BIN_DIR)</Value>
+    </BuildMacro>
+	<BuildMacro Include="MSVCRT_PATH">
+      <Value>$(MSVCRT_PATH)</Value>
+    </BuildMacro>
+	<BuildMacro Include="PATH_DIR">
+      <Value>$(PATH_DIR)</Value>
+    </BuildMacro>
+  </ItemGroup>
+</Project>
