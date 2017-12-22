@@ -74,13 +74,13 @@ Student: **Do Nhu Tai**<br/>
 ![alt text](https://raw.githubusercontent.com/dntai/dntai_chonnam_3dvision/master/images/property_sheet.png)
 
 
-### References
+## References
 [1] Laganière, Robert. "OpenCV 3 Computer Vision Application Programming Cookbook". Packt Publishing Ltd, 2017.
 
 [2] Ma, Y., Soatto, S., Kosecka, J., & Sastry, S. S. (2012). "An invitation to 3-d vision: from images to geometric models". Springer Science & Business Media.
 
 
-### Personal information
+## Personal information
 **Do Nhu Tai**<br/>
 Supervisor: Professor **Kim Soo-Hyung**<br/>
 Pattern Recognition Lab<br/>
