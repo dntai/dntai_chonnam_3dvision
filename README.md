@@ -81,8 +81,8 @@ Student: Do Nhu Tai
 
 
 ### Personal information
-**Do Nhu Tai**
-Supervisor: Professor **Kim Soo-Hyung**
-Pattern Recognition Lab  
-**Chonnam National University, Korea**
-E-mail: donhutai@gmail.com
+**Do Nhu Tai**<br/>
+Supervisor: Professor **Kim Soo-Hyung**<br/>
+Pattern Recognition Lab<br/>
+**Chonnam National University, Korea**<br/>
+E-mail: donhutai@gmail.com<br/>
