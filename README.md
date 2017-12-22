@@ -1,11 +1,8 @@
 # 3-D VISION FINAL PROJECT
 Chonnam National University, Gwangju, South Korea<br/>
 2017 3-D Vision Class  
-
-Professor: Chilwoo Lee
-
+Professor: **Chilwoo Lee**
 Student: Do Nhu Tai
-
 **Target: Building a application for argument reality video**
 
 ## Aruco Create Board
@@ -43,6 +40,7 @@ Student: Do Nhu Tai
 1. CalibrateCamera: Using exporting calibration camera parameters
 2. DetectChessboard: Checking dection chess board
 3. Vision3D (GUI): Main Application
+
 ![alt text](https://raw.githubusercontent.com/dntai/dntai_chonnam_3dvision/master/images/main_gui.png)
 
 
@@ -62,13 +60,13 @@ Student: Do Nhu Tai
 
 
 ## How to run source code
-**Project has already pre-configure with *.dll in libraries.
+**Project has already pre-configure with *.dll in libraries.**
 1. Download project from github
 2. Run *.bat in install directories
 
 
 ## How to build source code
-**Project has already pre-configure with *.dll in libraries.
+**Project has already pre-configure with *.dll in libraries.**
 1. Download project from github
 2. Open Visual Sutdio 2015
 3. Build every project in solution
@@ -78,12 +76,13 @@ Student: Do Nhu Tai
 
 ### References
 [1] Laganière, Robert. "OpenCV 3 Computer Vision Application Programming Cookbook". Packt Publishing Ltd, 2017.
+
 [2] Ma, Y., Soatto, S., Kosecka, J., & Sastry, S. S. (2012). "An invitation to 3-d vision: from images to geometric models". Springer Science & Business Media.
 
 
 ### Personal information
-Do Nhu Tai
-Supervisor: Professor Kim Soo-Hyung  
+**Do Nhu Tai**
+Supervisor: Professor **Kim Soo-Hyung**
 Pattern Recognition Lab  
-Chonnam National University, Korea  
+**Chonnam National University, Korea**
 E-mail: donhutai@gmail.com
